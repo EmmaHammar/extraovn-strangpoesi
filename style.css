@@ -1,0 +1,21 @@
+body, button, #btnPrintNewArray {
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.btnNotSelected {
+    margin: 5px;
+    border-radius: 8px;
+    background-color: wheat;
+}
+
+.btnSelected {
+    background-color: darkgoldenrod;
+    color:antiquewhite;
+    border-radius: 8px;
+}
+
+#btnPrint {
+    background-color: salmon;
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
