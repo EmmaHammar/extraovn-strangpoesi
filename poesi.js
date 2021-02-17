@@ -7,42 +7,48 @@ let sweets = ["lakrits", "geléhallon", "chips", "jordgubbar", "ost", "hallonbå
 
 let newSweets = [];
 
-for (i=0; i<sweets.length; i++) {
+for (i = 0; i < sweets.length; i++) {
     const btnSweets = document.createElement("button");
     btnSweets.classList = "btnNotSelected";
-    btnSweets.id= `${i}`;
+    btnSweets.id = `${i}`;
     btnSweets.textContent = `${sweets[i]}`;
     divSweets.appendChild(btnSweets);
 
     //lägga till items till nya arrayen newSweets:
-    btnSweets.addEventListener("click", function() {
+    btnSweets.addEventListener("click", function () {
         console.log("klick btnSweets", btnSweets.innerText);
         newSweets.push(btnSweets.innerText);
         console.log(newSweets);
-    });    
+    });
 };
 
-btnPrint.addEventListener("click", function() {
+btnPrint.addEventListener("click", function () {
 
-    //if?
-    //print newSweets, töm newSweets:
-    divResult.innerHTML = newSweets;
-    newSweets = [];
-    
-    
-    //else?
-    // Blandar om items i sweets-array
-    const shuffleSweets = sweets.sort(() => 0.5 - Math.random());
-    console.log("blandar arrayen", shuffleSweets);
+    // Börja med att kolla vad har vi får innehåll i input beroende på om det är tomt eller en siffra.
+    // Detta använder vi sedan i får if
+    console.log("klick", input.value);
 
-    //print x amount of words
-    // console.log("skriv ut så här många ord: ", input.value);
-    let printNumberWords = shuffleSweets.slice(0, input.value);
-    console.log(printNumberWords);
-    divResult.innerHTML = printNumberWords;
-    
-}); 
-    
+    // Kolla om input har ett värde, dvs vi ska slumpa, eller om det inte finns något värde så skriver vi ut besökarens egna sträng.
+    if (input.value == "") {
+        console.log("Skriv ut den egna strängen");
+        //if?
+        //print newSweets, töm newSweets:
+        divResult.innerHTML = newSweets;
+        newSweets = [];
+    } else {
+        console.log("Skriv ut random");
+        const shuffleSweets = sweets.sort(() => 0.5 - Math.random());
+        console.log("blandar arrayen", shuffleSweets);
+
+        //print x amount of words
+        // console.log("skriv ut så här många ord: ", input.value);
+        let printNumberWords = shuffleSweets.slice(0, input.value);
+        console.log(printNumberWords);
+        divResult.innerHTML = printNumberWords;
+    }
+
+});
+
 
 
 /*UPPGIFT
