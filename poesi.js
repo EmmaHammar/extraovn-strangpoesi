@@ -23,24 +23,25 @@ for (i=0; i<sweets.length; i++) {
 };
 
 btnPrint.addEventListener("click", function() {
+    console.log("klick", input.value); //kolla if else om input.value är tomt eller ej
 
-    //if?
+    if (input.value == "") {
     //print newSweets, töm newSweets:
     divResult.innerHTML = newSweets;
     newSweets = [];
-    
-    
-    //else?
+    console.log("input.value är tomt");
+    } else {
     // Blandar om items i sweets-array
     const shuffleSweets = sweets.sort(() => 0.5 - Math.random());
-    console.log("blandar arrayen", shuffleSweets);
+    // console.log("blandar arrayen", shuffleSweets);
+    console.log("input.value är inte tomt");
 
     //print x amount of words
     // console.log("skriv ut så här många ord: ", input.value);
     let printNumberWords = shuffleSweets.slice(0, input.value);
-    console.log(printNumberWords);
+    // console.log(printNumberWords);
     divResult.innerHTML = printNumberWords;
-    
+    }
 }); 
     
 
