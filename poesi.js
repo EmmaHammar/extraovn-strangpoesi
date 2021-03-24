@@ -40,7 +40,6 @@ for (i=0; i<sweets.length; i++) {
     });  
 
     input.addEventListener("click", function(){
-
         //remove color selection on sweets
         btnSweets.classList.remove ("btnSelected");
 
@@ -52,9 +51,11 @@ for (i=0; i<sweets.length; i++) {
 btnBuy.addEventListener("click", function() {
     const btnSweets = document.querySelectorAll(".btn")
     console.log(btnSweets);
+
     if (btnSweets.classList == "btnSelected") {
         btnSweets.classList.remove("btnSelected");
     };
+    
     mySweets.innerHTML = "";
 
     for (sweet in newSweets) {
@@ -67,10 +68,8 @@ btnBuy.addEventListener("click", function() {
     if (input.value == "") {
         //print newSweets, töm newSweets:
         divResult.innerHTML = newSweets;
-        // newSweets = [];
         // console.log("input.value är tomt");
     } else {
-        // TA BORT BTNSELECTEDKLASSEN
         // Blandar om items i sweets-array
         const shuffleSweets = sweets.sort(() => 0.5 - Math.random());
         // console.log("blandar arrayen", shuffleSweets);
@@ -79,7 +78,6 @@ btnBuy.addEventListener("click", function() {
         //print x amount of words
         // console.log("skriv ut så här många ord: ", input.value);
         let printNumberWords = shuffleSweets.slice(0, input.value);
-        // mySweets.innerHTML = printNumberWords;
 
         for (word in printNumberWords) {
             printNumberWordsTemplate = `
