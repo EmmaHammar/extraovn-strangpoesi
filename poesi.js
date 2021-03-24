@@ -1,46 +1,66 @@
+const wrapper = document.querySelector("#wrapper");
 const input = document.getElementById("input");
 const divSweets = document.getElementById("divSweets");
 const btnPrint = document.getElementById("btnPrint");
-const divResult = document.getElementById("divResult");
+const divResult = document.createElement("div");
+divResult.id = "divResult";
 
-let sweets = ["lakrits", "geléhallon", "chips", "jordgubbar", "ost", "hallonbåtar", "kaka", "paj", "choklad", "pannkaka", "fondue", "pasta", "nektarin", "salta pinnar", "musslor"];
+let sweets = ["apelsinflaskor", "geléhallon", "banana skids", "Bassett's Sour Winegums", "björnar", "hallonbåtar", "blåa kastanjer", "blåöga", "brio frukt", "bubblizz air", "bumlingar jordgubb"];
 
 let newSweets = [];
 
+//create btnSweets
 for (i=0; i<sweets.length; i++) {
     const btnSweets = document.createElement("button");
-    btnSweets.classList = "btnNotSelected";
+    btnSweets.classList = "btn";
     btnSweets.id= `${i}`;
     btnSweets.textContent = `${sweets[i]}`;
     divSweets.appendChild(btnSweets);
 
     //lägga till items till nya arrayen newSweets:
     btnSweets.addEventListener("click", function() {
-        console.log("klick btnSweets", btnSweets.innerText);
-        newSweets.push(btnSweets.innerText);
-        console.log(newSweets);
+        divResult.innerHTML = "";
+
+        // console.log("btnSweets.classList", btnSweets.classList);
+        btnSweets.classList.toggle("btnSelected");
+
+        if (btnSweets.classList == "btn btnSelected") {
+            console.log("den är markerad, lägg till i newSweets");
+            newSweets.push(btnSweets.innerText);
+            console.log("newSweets", newSweets);
+        } else {
+            console.log("den är inte markerad, ta bort från newSweets");
+            const index = newSweets.indexOf(btnSweets.innerText);
+            if (index > -1) {
+                newSweets.splice(index, 1);
+            }
+            console.log("newSweets after splice", newSweets);
+        };        
     });    
 };
 
 btnPrint.addEventListener("click", function() {
-    console.log("klick", input.value); //kolla if else om input.value är tomt eller ej
+    // console.log("klick", input.value); //kolla if else om input.value är tomt eller ej
 
+    wrapper.insertAdjacentElement("beforeend", divResult);
+    
     if (input.value == "") {
-    //print newSweets, töm newSweets:
-    divResult.innerHTML = newSweets;
-    newSweets = [];
-    console.log("input.value är tomt");
+        //print newSweets, töm newSweets:
+        divResult.innerHTML = newSweets;
+        // newSweets = [];
+        // console.log("input.value är tomt");
     } else {
-    // Blandar om items i sweets-array
-    const shuffleSweets = sweets.sort(() => 0.5 - Math.random());
-    // console.log("blandar arrayen", shuffleSweets);
-    console.log("input.value är inte tomt");
+        // TA BORT BTNSELECTEDKLASSEN
+        // Blandar om items i sweets-array
+        const shuffleSweets = sweets.sort(() => 0.5 - Math.random());
+        // console.log("blandar arrayen", shuffleSweets);
+        console.log("input.value är inte tomt");
 
-    //print x amount of words
-    // console.log("skriv ut så här många ord: ", input.value);
-    let printNumberWords = shuffleSweets.slice(0, input.value);
-    // console.log(printNumberWords);
-    divResult.innerHTML = printNumberWords;
+        //print x amount of words
+        // console.log("skriv ut så här många ord: ", input.value);
+        let printNumberWords = shuffleSweets.slice(0, input.value);
+        // console.log(printNumberWords);
+        divResult.innerHTML = printNumberWords;
     }
 }); 
     
