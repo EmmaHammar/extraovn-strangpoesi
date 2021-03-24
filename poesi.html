@@ -9,11 +9,31 @@
     <link rel="stylesheet" href="poesi.css">
 </head>
 <body>
+    <h1>Lösgodis</h1>
     <div id="wrapper">
-        <input id="input" placeholder="Skriv en siffra" type="number">
-        <div id="divSweets"></div>
-        <button id="btnPrint">Skriv ut</button>
+        <section>
+            <h2>Välj godis:</h2>
+            <div id="divSweets"></div>
+        </section>
+        
+        <h3>eller</h3>
+        
+        <section id="randomizeSweetsWrapper">
+            <h2>Slumpa fram godis:</h2>
+            <input id="input" placeholder="Skriv en siffra (1-10)" type="number">
+        </section>
     </div>
+
+    <span id="mySweetsWrapper" class="flexbox">
+        <span>
+            <button id="btnBuy">Köp</button>
+        </span>
+        <div>
+            <h4>Mitt lördagsgodis:</h4>
+            <ul id="mySweets"></ul>
+        </div>
+    </span>
+
 </body>
 <script src="poesi.js"></script>
 </html>

@@ -2,6 +2,16 @@ body, button, #btnPrintNewArray {
     font-family: 'Titillium Web', sans-serif;
 }
 
+h2 {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 2px;
+}
+
+h4 {
+    text-align: center;
+}
+
 .btn {
     margin: 5px;
     border-radius: 8px;
@@ -14,8 +24,36 @@ body, button, #btnPrintNewArray {
     border-radius: 8px;
 }
 
-#btnPrint {
+#divSweets {
+    max-width: 40vw;
+}
+
+.flexbox {
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+#wrapper {
+    display: grid;
+    grid-template-columns: 45vw 10vw 50vw;
+}
+
+#randomizeSweetsWrapper {
+    margin-bottom: 20px;
+}
+
+#btnBuy {
     background-color: salmon;
     border-radius: 8px;
-    font-size: 0.9rem;
+    font-size: 1.2rem;
+    margin-top: 8vh;
+    margin-left: 20px;
+    margin-right: 50px;
+}
+
+#mySweets {
+    background-color: lightskyblue;
+    min-width: 30vw;
+    min-height: 40vh;
 }

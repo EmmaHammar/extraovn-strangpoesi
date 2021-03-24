@@ -4,8 +4,9 @@ const divSweets = document.getElementById("divSweets");
 const btnPrint = document.getElementById("btnPrint");
 const divResult = document.createElement("div");
 divResult.id = "divResult";
+const mySweets = document.getElementById("mySweets");
 
-let sweets = ["apelsinflaskor", "geléhallon", "banana skids", "Bassett's Sour Winegums", "björnar", "hallonbåtar", "blåa kastanjer", "blåöga", "brio frukt", "bubblizz air", "bumlingar jordgubb"];
+let sweets = ["apelsinflaskor", "banana skids", "Bassett's Sour Winegums", "björnar", "hallonbåtar", "blåa kastanjer", "blåöga", "brio frukt", "bubblizz air", "bumlingar jordgubb"];
 
 let newSweets = [];
 
@@ -36,14 +37,33 @@ for (i=0; i<sweets.length; i++) {
             }
             console.log("newSweets after splice", newSweets);
         };        
-    });    
+    });  
+
+    input.addEventListener("click", function(){
+
+        //remove color selection on sweets
+        btnSweets.classList.remove ("btnSelected");
+
+        //empty newSweets array
+        newSweets = [];
+    })
 };
 
-btnPrint.addEventListener("click", function() {
-    // console.log("klick", input.value); //kolla if else om input.value är tomt eller ej
+btnBuy.addEventListener("click", function() {
+    const btnSweets = document.querySelectorAll(".btn")
+    console.log(btnSweets);
+    if (btnSweets.classList == "btnSelected") {
+        btnSweets.classList.remove("btnSelected");
+    };
+    mySweets.innerHTML = "";
 
-    wrapper.insertAdjacentElement("beforeend", divResult);
-    
+    for (sweet in newSweets) {
+        mySweetsTemplate = `
+                <li>${newSweets[sweet]}</li>
+        `;
+        mySweets.insertAdjacentHTML("beforeend", mySweetsTemplate);
+    };
+
     if (input.value == "") {
         //print newSweets, töm newSweets:
         divResult.innerHTML = newSweets;
@@ -59,8 +79,14 @@ btnPrint.addEventListener("click", function() {
         //print x amount of words
         // console.log("skriv ut så här många ord: ", input.value);
         let printNumberWords = shuffleSweets.slice(0, input.value);
-        // console.log(printNumberWords);
-        divResult.innerHTML = printNumberWords;
+        // mySweets.innerHTML = printNumberWords;
+
+        for (word in printNumberWords) {
+            printNumberWordsTemplate = `
+                    <li>${printNumberWords[word]}</li>
+            `;
+            mySweets.insertAdjacentHTML("beforeend", printNumberWordsTemplate);
+        };
     }
 }); 
     
